@@ -12,6 +12,13 @@ export class LogsComponent implements OnInit {
   constructor(private logService: LogService) { }
 
   ngOnInit() {
-    this.logs = this.logService.getLogs();
+    // this.logs = this.logService.getLogs(); // sync way
+    this.logService.getLogs().subscribe(logs => {
+      this.logs = logs;  // async way, better way
+    });
+  }
+  onSelect(log: Log) {
+    // console.log(log);
+    this.logService.setFormLog(log);
   }
 }

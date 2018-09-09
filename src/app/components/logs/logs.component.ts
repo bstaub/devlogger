@@ -21,4 +21,11 @@ export class LogsComponent implements OnInit {
     // console.log(log);
     this.logService.setFormLog(log);
   }
+
+  onDelete(log: Log) {
+    // console.log(log);
+    if(confirm('Bist du sicher?')) {
+      this.logService.deleteLog(log);
+    }
+  }
 }

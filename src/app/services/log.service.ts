@@ -43,4 +43,28 @@ export class LogService {
   setFormLog(log: Log) {
     this.logSource.next(log); // each time we click, we want update the form input
   }
+
+  addLog(log: Log) {
+    this.logs.unshift(log);  // puts at beginning not the end of array like push
+  }
+
+  updateLog(log: Log) {
+    // Delete Log
+    this.logs.forEach((cur, index) => {
+      if (log.id === cur.id) {
+        this.logs.splice(index, 1);
+      }
+    });
+    // Update at Top
+    this.logs.unshift(log);
+  }
+
+  deleteLog(log: Log) {
+    // Delete Log
+    this.logs.forEach((cur, index) => {
+      if (log.id === cur.id) {
+        this.logs.splice(index, 1);
+      }
+    });
+  }
 }
